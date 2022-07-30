@@ -4,6 +4,7 @@ const $hamburguerMenu = document.querySelector('.hamburger-menu');
 const $mobileMenu = document.querySelector('.mobile-menu');
 const $navShoppingCart = document.querySelector('.navbar-shopping-cart');
 const $productDetail = document.querySelector('.product-detail');
+const $cardsContainer = document.querySelector('.cards-container');
 
 $menuEmail.addEventListener('click', toggleDesktopMenu);
 $hamburguerMenu.addEventListener('click', toggleMobileMenu);
@@ -26,3 +27,106 @@ function toggleProductDetail(){
 
     $productDetail.classList.toggle('inactive');
 }
+
+const productList = [];
+
+productList.push({
+    name: 'Bike',
+    price: 120,
+    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+});
+
+productList.push({
+    name: 'Laptop',
+    price: 610,
+    image: 'https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+});
+
+productList.push({
+    name: 'Mouse',
+    price: 60,
+    image: 'https://images.pexels.com/photos/2115256/pexels-photo-2115256.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+});
+
+productList.push({
+    name: 'Cellphone',
+    price: 320,
+    image: 'https://images.pexels.com/photos/892757/pexels-photo-892757.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+});
+
+productList.push({
+    name: 'Smartwatch',
+    price: 150,
+    image: 'https://images.pexels.com/photos/267394/pexels-photo-267394.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+});
+
+productList.push({
+    name: 'Bike',
+    price: 120,
+    image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+});
+
+productList.push({
+    name: 'Laptop',
+    price: 610,
+    image: 'https://images.pexels.com/photos/2047905/pexels-photo-2047905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+});
+
+productList.push({
+    name: 'Mouse',
+    price: 60,
+    image: 'https://images.pexels.com/photos/2115256/pexels-photo-2115256.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+});
+
+productList.push({
+    name: 'Cellphone',
+    price: 320,
+    image: 'https://images.pexels.com/photos/892757/pexels-photo-892757.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
+});
+
+productList.push({
+    name: 'Smartwatch',
+    price: 150,
+    image: 'https://images.pexels.com/photos/267394/pexels-photo-267394.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+});
+
+
+function renderProducts(array){
+    for(product of productList){ // product = element
+        const $productCard = document.createElement('div');
+        $productCard.classList.add('product-card');
+    
+        const $productImg = document.createElement('img');
+        $productImg.setAttribute('src', product.image);
+    
+        const $productInfo = document.createElement('div');
+        $productInfo.classList.add('product-info');
+    
+        const $productInfoDetail = document.createElement('div');
+    
+        const $productPrice = document.createElement('p');
+        $productPrice.innerText = `$ ${product.price}`;
+    
+        const $productName = document.createElement('p');
+        $productName.innerText = `${product.name}`;
+    
+        $productInfoDetail.append($productPrice, $productName);
+    
+    
+        const $productFigure = document.createElement('figure'); 
+        const $figureImg = document.createElement('img');
+        $figureImg.setAttribute('src', './icons/bt_add_to_cart.svg');
+    
+        $productFigure.appendChild($figureImg);
+    
+        $productInfo.append($productInfoDetail, $productFigure);
+    
+        $productCard.append($productImg, $productInfo);
+    
+        $cardsContainer.appendChild($productCard);
+     
+    }
+
+}
+
+renderProducts(productList);
