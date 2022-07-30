@@ -5,33 +5,44 @@ const $mobileMenu = document.querySelector('.mobile-menu');
 const $navShoppingCart = document.querySelector('.navbar-shopping-cart');
 const $shoppingCartContainer = document.getElementById('shopping-cart-container');
 const $cardsContainer = document.querySelector('.cards-container');
-const $productDetail = document.getElementById('product-detail');
+const $productDetailContainer = document.getElementById('product-detail');
+const $productDetailCloseIcon = document.querySelector('.product-detail-close');
 
 $menuEmail.addEventListener('click', toggleDesktopMenu);
 $hamburguerMenu.addEventListener('click', toggleMobileMenu);
 $navShoppingCart.addEventListener('click', toggleShoppingCartContainer);
-//$productDetail.addEventListener('click', toggleProductDetail);
+$productDetailCloseIcon.addEventListener('click', closeProductDetailAside);
+
 
 function toggleDesktopMenu(){
     $shoppingCartContainer.classList.add('inactive');
-
+    $productDetailContainer.classList.add('inactive');
     $desktopMenu.classList.toggle('inactive');
 }
 
 function toggleMobileMenu(){
    $shoppingCartContainer.classList.add('inactive');
+   $productDetailContainer.classList.add('inactive');
 
     $mobileMenu.classList.toggle('inactive');
 }
 
 function toggleShoppingCartContainer(){
-   $mobileMenu.classList.add('inactive');
-
+    $mobileMenu.classList.add('inactive');
+    $productDetailContainer.classList.add('inactive');
+    $desktopMenu.classList.add('inactive');
     $shoppingCartContainer.classList.toggle('inactive');
 }
 
+function openProductDetailAside() {
+    $shoppingCartContainer.classList.add('inactive');
+    $productDetailContainer.classList.remove('inactive');
+}
 
+function closeProductDetailAside() {
+    $productDetailContainer.classList.add('inactive');
 
+}
 
 
 const productList = [];
@@ -104,6 +115,7 @@ function renderProducts(array){
     
         const $productImg = document.createElement('img');
         $productImg.setAttribute('src', product.image);
+        $productImg.addEventListener('click', openProductDetailAside);
     
         const $productInfo = document.createElement('div');
         $productInfo.classList.add('product-info');

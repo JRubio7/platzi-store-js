@@ -365,6 +365,10 @@ aside {
     object-fit: cover;
   }
 
+  .product-card img:hover{
+    cursor: pointer;
+  }
+
   .product-card .product-info {
     display: flex;
     justify-content: space-between;
